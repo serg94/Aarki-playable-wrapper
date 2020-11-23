@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          box-sizing: border-box;
+          text-size-adjust: none;
+      }
+
+      html {
+          height: 100%;
+          -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+          width: 100vw;
+          height: 100vh;
+      }
+
+      #gameContainer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+      }
+  </style>
+  <style>
+    /* playable styles here if need */
+  </style>
+</head>
+<body>
+<!--
+  Follow this requirements:
+
+  Playable ads have the following required specifications:
+    Use a single HTML.index file.
+    The index.html file must be inlined, with no links to other files or folders.
+    The file must be minified (optimized for machine-reading by removing empty spaces).
+    The file must be under 5MB.
+    The ad must comply with Mobile Rich Media Ad Interface Definitions (MRAID) 2.0 guidelines.
+
+   In addition, Aarki requires the following specifications:
+    Android games must use Android version 5.1 or higher
+    iOS games must use iOS version 8.0 or higher
+    Ads should support both portrait and landscape orientations - optional
+    Ads should not need any network requests (XHR) unless using a 3rd party for performance analysis - This should confirmed by Aarki beforehand
+    Do not use custom close button
+    No interactive elements are allowed i.e volume buttons on the top right or left side. (can be covered by close button)
+    Do not relay on having audio autoplay, can fail to play audio without user interaction, also not muted video, start game anyway
+-->
+  <script>
+    // Call for running CTA - Click Through Action - Download Click
+    // example: RUN_CTA('Apple/Play store url or empty')
+    // [url] is optional
+    window.RUN_CTA = function (url) {
+        window.open(url || 'default url');
+    }
+
+    // instead of window.onload/window.addEventListener('load')/document.addEventListener('ready')...
+    // use this
+    // callback will be called right after ad becomes viewable
+    // Everything can be loaded and set before this
+    // example: BECOME_VIEWABLE(gameStart)
+    window.BECOME_VIEWABLE = function (callback) {
+        window.addEventListener('load', callback);
+    }
+
+    // instead of window.onerror = function () {} use window.addEventListener('error', function() {})
+  </script>
+
+  <div id="gameContainer">
+    <!-- render game here, do not add elements out of this container -->
+  </div>
+
+  <script>
+    // suppose everything is ready for running game code here
+    // <-- playable code -->
+    //
+  </script>
+</body>
+</html>
