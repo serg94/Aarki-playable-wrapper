@@ -67,7 +67,11 @@
     // Everything can be loaded and set before this
     // example: BECOME_VIEWABLE(gameStart)
     window.BECOME_VIEWABLE = function (callback) {
-        window.addEventListener('load', callback);
+        if (document.readyState === 'complete') {
+            callback();
+        } else {
+            document.addEventListener('DOMContentLoaded', callback);
+        }
     }
 
     // instead of window.onerror = function () {} use window.addEventListener('error', function() {})
